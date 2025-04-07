@@ -5,6 +5,8 @@ import br.com.calculos.calculos.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CarroService {
     @Autowired // Instância da classe
@@ -16,18 +18,10 @@ public class CarroService {
         return "Carro salvo com sucesso!";
     }
 
-    public Carro findById(int id) {
-        if (id == 1) {
-            Carro carro = new Carro();
-            carro.setAnoFabricacao(2026);
-            carro.setModelo("Spider V12");
-            carro.setMarca("Ferrari");
-            carro.setNome("Batmovel");
+    public Carro findById(Long id) {
 
-            return carro;
-        } else {
-            return null;
-        }
+        Optional<Carro> carro = this.carroRepository.findById(id);
+        return carro.get();
     }
 
 
