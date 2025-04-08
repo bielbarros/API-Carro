@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/carro")
 public class CarroController {
@@ -36,7 +38,20 @@ public class CarroController {
         }
     }
 
+    @GetMapping("/lista")
+    public List<Carro>listarCarros(){
+        return carroService.listarCarros();
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarCarro(@PathVariable Long id) {
+        carroService.deletarCarros(id);
+        return ResponseEntity.noContent().build();
+    }
 
+    @PutMapping("/{id}")
+    public Carro atualizarCarro(@PathVariable Long id, @RequestBody Carro carro) {
+        return carroService.atualizarCarro(id, carro);
+    }
 
 }
