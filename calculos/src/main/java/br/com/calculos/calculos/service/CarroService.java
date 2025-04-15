@@ -19,7 +19,7 @@ public class CarroService {
         return "Carro salvo com sucesso!";
     }
 
-    public String update(Carro carro, long id) {
+    public String update(Carro carro, Long id) {
         carro.setId(id);
         this.carroRepository.save(carro);
         return "Carro foi atualizado com sucesso!";

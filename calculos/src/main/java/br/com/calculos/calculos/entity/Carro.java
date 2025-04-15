@@ -15,7 +15,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class Carro {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +22,5 @@ public class Carro {
     private String marca;
     private String modelo;
     private int anoFabricacao;
-
 
 }
