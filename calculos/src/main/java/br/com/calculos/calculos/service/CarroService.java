@@ -19,37 +19,36 @@ public class CarroService {
         return "Carro salvo com sucesso!";
     }
 
+    public String update(Carro carro, long id) {
+        carro.setId(id);
+        this.carroRepository.save(carro);
+        return "Carro foi atualizado com sucesso!";
+
+    }
+
+
+    public String delete(long id) {
+        this.carroRepository.deleteById(id);
+        return "Carro deletado com sucesso!";
+    }
+
+    public List<Carro> findAll() {
+        List<Carro> lista = this.carroRepository.findAll();
+        return lista;
+    }
+
+
     public Carro findById(Long id) {
 
-        Optional<Carro> carro = this.carroRepository.findById(id);
-        return carro.get();
+        Carro carro = this.carroRepository.findById(id).get();
+        return carro;
     }
 
-    public List<Carro> listarCarros() {
-        return carroRepository.findAll();
-    }
 
-    public void deletarCarros(Long id) {
-        if(carroRepository.existsById(id)){
-            carroRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Carro não encontrado!");
-        }
-    }
 
-    public Carro atualizarCarro(Long id, Carro novoCarro) {
-        Optional<Carro> carroExistente = carroRepository.findById(id);
-        if (carroExistente.isPresent()) {
-            Carro carro = carroExistente.get();
-            carro.setNome(novoCarro.getNome());
-            carro.setModelo(novoCarro.getModelo());
-            carro.setMarca(novoCarro.getMarca());
-            carro.setAnoFabricacao(novoCarro.getAnoFabricacao());
-            return carroRepository.save(carro);
-        } else {
-            throw new RuntimeException("Carro não encontrado");
-        }
-    }
+
+
+
 
 
 

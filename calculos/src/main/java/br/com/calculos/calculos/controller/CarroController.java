@@ -41,7 +41,7 @@ public class CarroController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
 
         try {
             String mensagem = this.carroService.delete(id);
