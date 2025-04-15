@@ -74,13 +74,13 @@ public class Carro {
 
 ## 🔄 Endpoints
 
-| Método | Endpoint        | Descrição               |
-|--------|------------------|--------------------------|
-| GET    | `/carros`        | Lista todos os carros    |
-| GET    | `/carros/{id}`   | Busca carro por ID       |
-| POST   | `/carros`        | Cria um novo carro       |
-| PUT    | `/carros/{id}`   | Atualiza carro por ID    |
-| DELETE | `/carros/{id}`   | Remove carro por ID      |
+| Método | Endpoint                    | Descrição               |
+|--------|-----------------------------|--------------------------|
+| GET    | `/api/carros/findAll`       | Lista todos os carros    |
+| GET    | `/api/carros/findById/{id}` | Busca carro por ID       |
+| POST   | `/api/carros/save`          | Cria um novo carro       |
+| PUT    | `/api/carros/update/{id}`   | Atualiza carro por ID    |
+| DELETE | `/api/carros/delete/{id}`   | Remove carro por ID      |
 
 ---
 
@@ -89,16 +89,15 @@ public class Carro {
 Edite seu arquivo `application.properties` com as credenciais do seu banco:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/carrosdb
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
-
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.datasource.url=jdbc:mysql://localhost:3306/carros
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql: true
 ```
 
-> ⚠️ Certifique-se de que o banco `carrosdb` já foi criado no MySQL antes de rodar a aplicação.
+> ⚠️ Certifique-se de que o banco `carros` já foi criado no MySQL antes de rodar a aplicação.
 
 ---
 
@@ -107,8 +106,8 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 1. Clone o projeto:
 
 ```bash
-git clone https://github.com/seuusuario/carros-api.git
-cd carros-api
+git clone https://github.com/bielbarros/API-Carro.git
+cd carros
 ```
 
 2. Rode a aplicação com:
